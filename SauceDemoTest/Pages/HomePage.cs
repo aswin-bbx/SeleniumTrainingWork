@@ -12,6 +12,7 @@ namespace SauceDemoTest.Pages
         public IWebDriver driver;
 
         public static readonly By jacketlink = By.Id("item_5_img_link");
+        public static readonly By product = By.ClassName("inventory_item");
         public HomePage(IWebDriver driver)
         {
             this.driver = driver;
@@ -36,6 +37,15 @@ namespace SauceDemoTest.Pages
         public String GetJacketPrice()
         {
              return driver.FindElement(By.XPath("/html/body/div/div/div/div[2]/div/div/div/div[4]/div[2]/div[2]/div")).Text;
+        }
+        public int GetCount()
+        {
+            return driver.FindElements(product).Count();
+        }
+
+        public String GetTShirtPrice()
+        {
+            return driver.FindElement(By.XPath("/html/body/div/div/div/div[2]/div/div/div/div[3]/div[2]/div[2]/div")).Text;
         }
     }
 }
