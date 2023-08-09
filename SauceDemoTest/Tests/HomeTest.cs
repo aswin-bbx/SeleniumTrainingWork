@@ -50,5 +50,21 @@ namespace SauceDemoTest.Tests
             Console.WriteLine(TshirtResult);
             Assert.AreEqual(TshirtResult, "$15.99");
         }
-    }
+
+        [TestMethod]
+        public void CartCheck()
+        {
+            homepage = new HomePage(driver);
+            loginpage = new LoginPage(driver);
+            loginpage.EnterUserName("standard_user");
+            loginpage.EnterPassword("secret_sauce");
+            loginpage.ClickLogin();
+            homepage.ClickAddToCart();
+            string s2 = homepage.getCartNumber();
+            string s1 = "1";
+            Assert.AreEqual(s2,s1);
+
+        }
+
+        }
 }

@@ -13,6 +13,8 @@ namespace SauceDemoTest.Pages
 
         public static readonly By jacketlink = By.Id("item_5_img_link");
         public static readonly By product = By.ClassName("inventory_item");
+        public static readonly By AddtocartButton = By.XPath("//*[@id=\"add-to-cart-sauce-labs-backpack\"]");
+        public static readonly By cartNumber = By.XPath("//*[@id=\"shopping_cart_container\"]/a/span");
         public HomePage(IWebDriver driver)
         {
             this.driver = driver;
@@ -46,6 +48,15 @@ namespace SauceDemoTest.Pages
         public String GetTShirtPrice()
         {
             return driver.FindElement(By.XPath("/html/body/div/div/div/div[2]/div/div/div/div[3]/div[2]/div[2]/div")).Text;
+        }
+
+        public void ClickAddToCart()
+        {
+            driver.FindElement(AddtocartButton).Click();
+        }
+
+        public string getCartNumber() {
+            return driver.FindElement(By.XPath("//*[@id=\"shopping_cart_container\"]/a/span")).Text;
         }
     }
 }
